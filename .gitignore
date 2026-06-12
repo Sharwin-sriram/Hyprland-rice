@@ -8,5 +8,15 @@ Thunar
 xfce4
 mozilla
 pulse
+ibus
+Kitware
+WhatsApp Desktop
+dconf
+micro
 
+# Files
 QtProject.conf
+user-dirs.locale
+mimeapps.list
+.gsd-keyboard.settings-ported
+filelightrc
