@@ -1,7 +1,7 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-size: 15px;
     /* background: none; */
 }
 
@@ -15,6 +15,15 @@ window#waybar {
 
 window#waybar.hidden {
     opacity: 0.2;
+}
+
+#custom-battery {
+    background-image: url('/home/Sharwin/.config/waybar/icons/wifi/4Bar.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 30px;
+    min-height: 30px;
 }
 
 /*

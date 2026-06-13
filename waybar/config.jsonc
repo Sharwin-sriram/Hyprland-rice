@@ -2,11 +2,11 @@
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
+    "height": 35, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 5, // Gaps between modules (4px)
     // Choose the order of the modules
-    "reload_style_on_change" : true,
+    "reload_style_on_change": true,
     "modules-left": [
         "custom/cpu",
         "cpu",
@@ -21,14 +21,13 @@
         "memory"
     ],
     "modules-right": [
-        "battery",
+        "custom/battery",
         "tray",
         "custom/gpu"
         // "custom/power"
     ],
     // Modules configuration
-    "hyprland/workspaces": {
-    },
+    "hyprland/workspaces": {},
     "tray": {
         "spacing": 20
     },
@@ -47,38 +46,42 @@
     "temperature": {
         "critical-threshold": 80,
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["󰉬", "", "󰉪"]
+        "format-icons": [
+            "󰉬",
+            "",
+            "󰉪"
+        ]
     },
     "backlight": {
         "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
-    "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "&#x202b;{icon}&#x202c; {capacity}%",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% 󰃨",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
+    "custom/battery": {
+        "exec": "$HOME/.config/waybar/scripts/Battery.sh",
+        "return-type": "json",
+        "format": "{text}%",
+        "interval": 5
     },
     "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
     },
     "network": {
         "format-wifi": "{essid} ({signalStrength}%) ",
@@ -102,30 +105,34 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         },
         "on-click": "pavucontrol"
     },
-    "custom/cpu":{
+    "custom/cpu": {
         "format": "{text} RPM",
         "exec": "$HOME/.config/waybar/scripts/CPU.sh",
         "return-type": "json",
         "interval": 5
     },
-    "custom/gpu":{
+    "custom/gpu": {
         "format": "RPM {text}",
         "exec": "$HOME/.config/waybar/scripts/GPU.sh",
         "return-type": "json",
         "interval": 5
     },
     "custom/power": {
-        "format" : "⏻",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot"
-		}
+        "format": "⏻",
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+        "menu-actions": {
+            "shutdown": "shutdown",
+            "reboot": "reboot"
+        }
     }
 }
