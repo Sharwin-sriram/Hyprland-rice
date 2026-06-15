@@ -8,120 +8,88 @@
     // Choose the order of the modules
     "reload_style_on_change": true,
     "modules-left": [
-        "custom/cpu",
-        "cpu",
+        "custom/cpuSpeed",
         "temperature"
-        // "hyprland/window",
-        // "custom/media",
     ],
     "modules-center": [
-        "network",
+        "custom/network",
         "hyprland/workspaces",
         "pulseaudio",
-        "memory"
+        "custom/memory",
+        "custom/battery"
     ],
     "modules-right": [
-        "custom/battery",
         "tray",
-        "custom/gpu"
-        // "custom/power"
+        "custom/temperatureGPU",
+        "custom/gpuSpeed"
     ],
     // Modules configuration
-    "hyprland/workspaces": {},
+    "hyprland/workspaces": {
+        "on-click": "activate",
+        "all-outputs": true
+    },
     "tray": {
         "spacing": 20
     },
-    "clock": {
-        "timezone": "Asia/Calcutta",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
-    },
     "cpu": {
-        "format": "{usage}% ",
+        "format": "{usage}%",
         "tooltip": false
     },
-    "memory": {
-        "format": "{}% "
+    "custom/memory": {
+        "format": "{text}",
+        "exec": "$HOME/.config/waybar/scripts/Memory.sh",
+        "return-type": "json",
+        "interval": 25
     },
     "temperature": {
         "critical-threshold": 80,
-        "format": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C",
         "format-icons": [
             "󰉬",
             "",
             "󰉪"
         ]
     },
-    "backlight": {
-        "format": "{percent}% {icon}",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
-    },
     "custom/battery": {
         "exec": "$HOME/.config/waybar/scripts/Battery.sh",
         "return-type": "json",
         "format": "{text}%",
-        "interval": 5
+        "interval": 60
     },
-    "power-profiles-daemon": {
-        "format": "{icon}",
-        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-        "tooltip": true,
-        "format-icons": {
-            "default": "",
-            "performance": "",
-            "balanced": "",
-            "power-saver": ""
-        }
-    },
-    "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} 󰊗",
-        "tooltip-format": "{ifname} via {gwaddr} 󰊗",
-        "format-linked": "{ifname} (No IP) 󰊗",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    "custom/network": {
+        "format": "{text}",
+        "exec": "$HOME/.config/waybar/scripts/Network.sh",
+        "return-type": "json",
+        "interval" : 10
     },
     "pulseaudio": {
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": "󰅶 {icon} {format_source}",
-        "format-muted": "󰅶 {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        // "format": "{volume}% {icon} {format_source}",
+        // "format-source": "",
+        // "format-source-muted": "",
+        "format": "{volume}% {icon}",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "󰂑",
-            "headset": "󰂑",
-            "phone": "",
-            "portable": "",
-            "car": "",
             "default": [
                 "",
                 "",
                 ""
             ]
-        },
-        "on-click": "pavucontrol"
+        }
     },
-    "custom/cpu": {
+    "custom/cpuSpeed": {
         "format": "{text} RPM",
         "exec": "$HOME/.config/waybar/scripts/CPU.sh",
         "return-type": "json",
         "interval": 5
     },
-    "custom/gpu": {
+    "custom/gpuSpeed": {
         "format": "RPM {text}",
         "exec": "$HOME/.config/waybar/scripts/GPU.sh",
+        "return-type": "json",
+        "interval": 5
+    },
+    "custom/temperatureGPU": {
+        "format": "{text}°C ",
+        "exec": "$HOME/.config/waybar/scripts/GPUTemperature.sh",
         "return-type": "json",
         "interval": 5
     },
