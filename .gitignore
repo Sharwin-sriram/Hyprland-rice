@@ -15,6 +15,20 @@ dconf
 micro
 obs-studio
 vlc
+akonadi-firstrunrc
+akonadi
+akonadi_contacts_resource_0rc
+akonadi_ical_resource_0rc
+akonadi_indexing_agentrc
+akonadi_maildir_resource_0rc
+defaultcalendarrc
+emaildefaults
+emailidentities
+kalendarrc
+libreoffice/
+merkuro.calendarrc
+specialmailcollectionsrc
+spectaclerc
 
 # Files
 QtProject.conf
