@@ -121,9 +121,9 @@ hl.config({
 
         blur = {
             enabled   = true,
-            size      = 3,
+            size      = 8,
             passes    = 1,
-            vibrancy  = 0.1696,
+            vibrancy  = 1,
         },
     },
 
@@ -200,8 +200,8 @@ hl.config({
 
 hl.config({
     misc = {
-        force_default_wallpaper = -1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo   = false, -- If true disables the random hyprland logo / anime girl background. :(
+        force_default_wallpaper = 0,    -- Set to 0 or 1 to disable the anime mascot wallpapers
+        disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
     },
 })
 
@@ -265,11 +265,19 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
+-- Screenshot keybind
+
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("flameshot gui --path ~/Screenshots"))
+
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
+
+-- Create a new Focus
+
+hl.bind(mainMod .. " + D", hl.dsp.window.move({ workspace = "empty" }))
 
 -- Switch windows using CTRL SUPER ARROW KEYS
 -- hl.bind(mainMod .. " + CTRL", "left", "movewindow", "l")
@@ -290,8 +298,8 @@ hl.bind(mainMod .. " + CTRL + right", hl.dsp.focus({workspace = "e+1" }))
 
 
 -- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+-- hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
+-- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
