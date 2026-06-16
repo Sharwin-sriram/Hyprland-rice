@@ -36,8 +36,8 @@ local menu        = "hyprlauncher"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function () 
---   hl.exec_cmd(terminal)
---   hl.exec_cmd("nm-applet & hyprpaper & firefox")
+  	hl.exec_cmd("flameshot")
+    hl.exec_cmd("hyprpaper")
     hl.exec_cmd("systemctl --user start graphical-session.target")
     hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
     hl.exec_cmd("waybar")
@@ -347,6 +347,14 @@ hl.window_rule({
     },
 
     no_focus = true,
+})
+
+-- Blur for Waybar
+hl.layer_rule({
+    name  = "waybar-blur",
+    match = { namespace = "waybar" },
+    blur  = true,
+    ignore_alpha = 0.5,
 })
 
 -- Layer rules also return a handle.

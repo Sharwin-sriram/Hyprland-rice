@@ -1,0 +1,58 @@
+#custom-memory {
+    padding: 0 0.6em;
+    min-width: 4em;
+    font-size: 1.2em;
+    border-bottom: 4px solid rgb(52, 170, 183);
+    border-radius: 0.5em;
+}
+
+#custom-network {
+    border-bottom: 4px solid chartreuse;
+    border-bottom-left-radius: 0.5em;
+    min-width: 1.6em;
+    padding: 0 0.6em;
+    margin: 0;
+}
+
+#custom-network.disconnected {
+    color: #f53c3c;
+    border-bottom: 4px solid red;
+}
+
+#custom-speed {
+    border-bottom: 4px solid chartreuse;
+    border-bottom-right-radius: 0.5em;
+    margin-left: -5px;
+    padding: 0 0.5em 0 0.3em;
+}
+
+#custom-speed.disconnected {
+    opacity: 0;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#custom-battery {
+    font-size: 1.2em;
+    min-width: 4em;
+}
+
+#custom-battery.high {
+    border-bottom: 4px solid limegreen;
+    border-radius: 0.5em;
+}
+
+#hyprland-workspaces {
+    min-width: 12em;
+    padding: 0 2em;
+}
+
+#tray>.passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}

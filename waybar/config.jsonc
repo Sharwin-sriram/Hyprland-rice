@@ -6,27 +6,36 @@
     // "width": 1280, // Waybar width
     "spacing": 5, // Gaps between modules (4px)
     // Choose the order of the modules
+    // "margin-top": 5,
+    "margin-left": 10,
+    "margin-right": 10,
+    "margin-bottom": 0,
     "reload_style_on_change": true,
     "modules-left": [
         "custom/cpuSpeed",
         "temperature"
     ],
     "modules-center": [
+        // "network",
         "custom/network",
+        "custom/speed",
         "hyprland/workspaces",
-        "pulseaudio",
         "custom/memory",
-        "custom/battery"
+        "custom/battery",
+        "pulseaudio",
+        "tray"
     ],
     "modules-right": [
-        "tray",
         "custom/temperatureGPU",
         "custom/gpuSpeed"
     ],
     // Modules configuration
     "hyprland/workspaces": {
-        "on-click": "activate",
-        "all-outputs": true
+        // "window-rewrite": {}
+        "all-outputs" : "true",
+        "show-special" : "true",
+        "on-click" : "activate",
+        "active-only" : false
     },
     "tray": {
         "spacing": 20
@@ -36,37 +45,41 @@
         "tooltip": false
     },
     "custom/memory": {
-        "format": "{text}",
         "exec": "$HOME/.config/waybar/scripts/Memory.sh",
+        "format" : "{text}",
         "return-type": "json",
-        "interval": 25
+        "interval": 25,
+        "tooltip": true
     },
     "temperature": {
         "critical-threshold": 80,
-        "format": "{temperatureC}°C",
-        "format-icons": [
-            "󰉬",
-            "",
-            "󰉪"
-        ]
+        "format": "{temperatureC}°C"
     },
     "custom/battery": {
         "exec": "$HOME/.config/waybar/scripts/Battery.sh",
         "return-type": "json",
-        "format": "{text}%",
+        "format": "{text}",
         "interval": 60
     },
     "custom/network": {
         "format": "{text}",
         "exec": "$HOME/.config/waybar/scripts/Network.sh",
         "return-type": "json",
-        "interval" : 10
+        "interval": 10,
+        "tooltip": true
+    },
+    "custom/speed" :{
+        "format": "{text}",
+        "exec" : "$HOME/.config/waybar/scripts/NetworkSpeed.sh",
+        "return-type" : "json",
+        "interval" : 1,
+        "tooltip": true
     },
     "pulseaudio": {
         // "format": "{volume}% {icon} {format_source}",
         // "format-source": "",
         // "format-source-muted": "",
-        "format": "{volume}% {icon}",
+        "format": "{icon} {volume}%",
         "format-icons": {
             "default": [
                 "",
@@ -76,7 +89,7 @@
         }
     },
     "custom/cpuSpeed": {
-        "format": "{text} RPM",
+        "format": "{text} RPM /",
         "exec": "$HOME/.config/waybar/scripts/CPU.sh",
         "return-type": "json",
         "interval": 5
@@ -88,7 +101,7 @@
         "interval": 5
     },
     "custom/temperatureGPU": {
-        "format": "{text}°C ",
+        "format": "{text}°C /",
         "exec": "$HOME/.config/waybar/scripts/GPUTemperature.sh",
         "return-type": "json",
         "interval": 5

@@ -1,16 +1,25 @@
+@import url('LeftModules.css');
+@import url('MiddleModules.css');
+@import url('RightModules.css');
+
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     /* background: none; */
+    /* --bor: 3px; */
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    background-color: rgba(0, 0, 0, 0);
     color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
+    transition: all .5s ease;
+}
+
+.modules-right,
+.modules-left {
+    border-bottom: 4px solid sandybrown;
+    border-radius: 0.5em;
 }
 
 window#waybar.hidden {
@@ -126,15 +135,6 @@ label:focus {
     background-color: #90b1b1;
 }
 
-#network {
-    background-color: #2980b9;
-}
-
-#network.disconnected {
-    background-color: #f53c3c;
-}
-
-
 #pulseaudio.muted {
     background-color: #90b1b1;
     color: #2a5c45;
@@ -161,19 +161,6 @@ label:focus {
 
 #custom-media.custom-vlc {
     background-color: #ffa000;
-}
-
-#tray {
-    background-color: #2980b9;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
 }
 
 #idle_inhibitor {
