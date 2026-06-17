@@ -35,8 +35,8 @@ local menu        = "hyprlauncher"
 -- Autostart necessary processes (like notifications daemons, status bars, etc.)
 -- Or execute your favorite apps at launch like this:
 --
-hl.on("hyprland.start", function () 
-  	hl.exec_cmd("flameshot")
+hl.on("hyprland.start", function ()
+    hl.exec_cmd("hyprlock")
     hl.exec_cmd("hyprpaper")
     hl.exec_cmd("systemctl --user start graphical-session.target")
     hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
@@ -257,8 +257,8 @@ hl.device({
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-local closeWindowBind = hl.bind(mainMod .. " + W", hl.dsp.window.close())
+hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal) , {repeating = true})
+local closeWindowBind = hl.bind(mainMod .. " + W", hl.dsp.window.close(), {repeating = true})
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
@@ -270,8 +270,8 @@ hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 -- Screenshot keybind
 
 -- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("flameshot gui -c -s"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("flameshot gui"))
-hl.bind(mainMod .. " + Print",hl.dsp.exec_cmd("flameshot full --clipboard --path ~/Screenshots"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/screenshot.sh"))
+hl.bind(mainMod .. " + Print",hl.dsp.exec_cmd("grim - | wl-copy"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -336,6 +336,17 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 -- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 
 -- Example window rules that are useful
+
+-- Force Flameshot to float and stay on top
+hl.window_rule({
+    name  = "flameshot-float",
+    match = { class = "flameshot" },
+
+    float          = true,
+    monitor        = "current",
+    move           = "0 0",
+    no_anim        = true
+})
 
 local suppressMaximizeRule = hl.window_rule({
     -- Ignore maximize requests from all apps. You'll probably like this.
