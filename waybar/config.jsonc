@@ -32,10 +32,10 @@
     // Modules configuration
     "hyprland/workspaces": {
         // "window-rewrite": {}
-        "all-outputs" : "true",
-        "show-special" : "true",
-        "on-click" : "activate",
-        "active-only" : false
+        "all-outputs": "true",
+        "show-special": "true",
+        "on-click": "activate",
+        "active-only": false
     },
     "tray": {
         "spacing": 20
@@ -46,7 +46,7 @@
     },
     "custom/memory": {
         "exec": "$HOME/.config/waybar/scripts/Memory.sh",
-        "format" : "{text}",
+        "format": "{text}",
         "return-type": "json",
         "interval": 25,
         "tooltip": true
@@ -68,11 +68,11 @@
         "interval": 10,
         "tooltip": true
     },
-    "custom/speed" :{
+    "custom/speed": {
         "format": "{text}",
-        "exec" : "$HOME/.config/waybar/scripts/NetworkSpeed.sh",
-        "return-type" : "json",
-        "interval" : 1,
+        "exec": "$HOME/.config/waybar/scripts/NetworkSpeed.sh",
+        "return-type": "json",
+        "interval": 1,
         "tooltip": true
     },
     "pulseaudio": {
@@ -86,7 +86,8 @@
                 "",
                 ""
             ]
-        }
+        },
+        "on-click": "pavucontrol"
     },
     "custom/cpuSpeed": {
         "format": "{text} RPM /",
