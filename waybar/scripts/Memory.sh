@@ -4,4 +4,4 @@ pct=$(free | awk '/Mem/ {printf "%.0f", $3/$2 * 100}')
 
 icon=$'\uefc5'
 
-printf '{"text":"%d%% %s","tooltip":"%sGB / %sGB"}\n' "$pct" "$icon" "$use" "$tot"
+printf '{"text":"%d%% %s","tooltip":"%sGiB / %sGiB"}\n' "$pct" "$icon" "$use" "$tot"
