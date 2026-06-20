@@ -36,7 +36,6 @@ local menu        = "hyprlauncher"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function ()
-    hl.exec_cmd("hyprlock")
     hl.exec_cmd("hyprpaper")
     hl.exec_cmd("systemctl --user start graphical-session.target")
     hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
@@ -267,7 +266,7 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + A", hl.dsp.layout("togglesplit"))    -- dwindle only
+hl.bind(mainMod .. " + TAB", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen("maximized", "toggle")) -- Toggle fullscreen
 
 -- Screenshot keybind
@@ -283,8 +282,10 @@ hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 
 -- Create a new workspace and Focus on it
-
 hl.bind(mainMod .. " + D", hl.dsp.window.move({ workspace = "empty" }))
+
+-- Jump to a new empty workspace
+hl.bind(mainMod .. " + T", hl.dsp.focus({ workspace = "empty" }))
 
 -- Switch windows using CTRL SUPER ARROW KEYS
 -- hl.bind(mainMod .. " + CTRL", "left", "movewindow", "l")
