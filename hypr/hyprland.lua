@@ -35,12 +35,7 @@ local menu        = "hyprlauncher"
 -- Autostart necessary processes (like notifications daemons, status bars, etc.)
 -- Or execute your favorite apps at launch like this:
 --
-hl.on("hyprland.start", function ()
-    hl.exec_cmd("hyprpaper")
-    hl.exec_cmd("systemctl --user start graphical-session.target")
-    hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-    hl.exec_cmd("waybar")
-end)
+require("startupApps")
 
 
 -------------------------------
@@ -49,15 +44,7 @@ end)
 
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
-hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_SIZE", "24")
-hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
-hl.env("LIBVA_DRIVER_NAME", "nvidia")
-hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
-hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
-hl.env("NVD_BACKEND", "direct")
-hl.env("WLR_NO_HARDWARE_CURSORS", "1")
--- hl.env("GBM_BACKEND", "nvidia-drm")
+require("environmentVariables")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -83,58 +70,11 @@ hl.env("WLR_NO_HARDWARE_CURSORS", "1")
 -----------------------
 
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
-hl.config({
-    general = {
-        gaps_in  = 4,
-        gaps_out = 10,
 
-        border_size = 1,
-
-        col = {
-        	active_border = "rgba(33ccffee)",
-            -- active_border   = { colors = {"rgba(33ccffee)", "rgba(00ff99ee)"}, angle = 45 },
-            inactive_border = "rgba(595959aa)",
-        },
-
-        -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
-        resize_on_border = false,
-
-        -- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
-        allow_tearing = false,
-
-        layout = "dwindle",
-    },
-
-    decoration = {
-        rounding       = 10,
-        rounding_power = 2,
-
-        -- Change transparency of focused and unfocused windows
-        active_opacity   = 1.0,
-        inactive_opacity = 0.8,
-
-        shadow = {
-            enabled      = true,
-            range        = 4,
-            render_power = 3,
-            color        = 0xee1a1a1a,
-        },
-
-        blur = {
-            enabled   = true,
-            size      = 8,
-            passes    = 1,
-            vibrancy  = 1,
-        },
-    },
-
-    animations = {
-        enabled = true,
-    },
-})
+require("windowRules")
 
 -- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
-require("animations.animations")
+require("animations")
 
 -- Default springs
 hl.animation({ leaf = "workspaces",    enabled = true,  speed = 2.5, bezier = "slide", style = "slide 100%" })
@@ -253,84 +193,7 @@ hl.device({
 ---- KEYBINDINGS ----
 ---------------------
 
-local mainMod = "SUPER" -- Sets "Windows" key as main modifier
-
--- require("newWindow")
-
--- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal) , {repeating = true})
-local closeWindowBind = hl.bind(mainMod .. " + W", hl.dsp.window.close(), {repeating = true})
--- closeWindowBind:set_enabled(false)
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + TAB", hl.dsp.layout("togglesplit"))    -- dwindle only
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen("maximized", "toggle")) -- Toggle fullscreen
-
--- Screenshot keybind
-
--- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("flameshot gui -c -s"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/screenshot.sh"))
-hl.bind(mainMod .. " + Print",hl.dsp.exec_cmd("grim - | wl-copy"))
-
--- Move focus with mainMod + arrow keys
-hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
-
--- Create a new workspace and Focus on it
-hl.bind(mainMod .. " + D", hl.dsp.window.move({ workspace = "empty" }))
-
--- Jump to a new empty workspace
-hl.bind(mainMod .. " + T", hl.dsp.focus({ workspace = "empty" }))
-
--- Switch windows using CTRL SUPER ARROW KEYS
--- hl.bind(mainMod .. " + CTRL", "left", "movewindow", "l")
-
--- Switch workspaces with mainMod + [0-9]
--- Move active window to a workspace with mainMod + SHIFT + [0-9]
-for i = 1, 10 do
-    local key = i % 10 -- 10 maps to key 0
-    hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
-    hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
-    hl.bind(mainMod .. "+ SHIFT + left", hl.dsp.window.move({ workspace = i }))
-    hl.bind(mainMod .. "+ SHIFT + right", hl.dsp.window.move({ workspace = i }))
-end
-
-
-hl.bind(mainMod .. " + CTRL + left", hl.dsp.focus({workspace = "e-1"}))
-hl.bind(mainMod .. " + CTRL + right", hl.dsp.focus({workspace = "e+1" }))
-
-
--- Example special workspace (scratchpad)
--- hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
--- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
-
--- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
-
--- Move/resize windows with mainMod + LMB/RMB and dragging
-hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
-hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
-
--- Laptop multimedia keys for volume and LCD brightness
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+"), { locked = true, repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"),      { locked = true, repeating = true })
-hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),     { locked = true, repeating = true })
-hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),   { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"),                  { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"),                  { locked = true, repeating = true })
-
--- Requires playerctl
-hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
-
+require("Keybinds")
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
@@ -341,16 +204,6 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 
 -- Example window rules that are useful
 
--- Force Flameshot to float and stay on top
-hl.window_rule({
-    name  = "flameshot-float",
-    match = { class = "flameshot" },
-
-    float          = true,
-    monitor        = "current",
-    move           = "0 0",
-    no_anim        = true
-})
 
 local suppressMaximizeRule = hl.window_rule({
     -- Ignore maximize requests from all apps. You'll probably like this.
