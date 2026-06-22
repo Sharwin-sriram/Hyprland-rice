@@ -8,3 +8,5 @@ hl.curve("overshoot",      { type = "bezier", points = { {0.5, 0.9}, {0.1, 1.1} 
 hl.curve("rubber",         { type = "spring", mass = 1, stiffness = 70, dampening = 10 } )
 
 hl.curve("easy",           { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
+
+hl.curve("specialEase", { type = "bezier", points = { {0.25, 0.1}, {0.25, 1.0} } })

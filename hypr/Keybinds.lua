@@ -1,3 +1,7 @@
+---------------------
+---- MY PROGRAMS ----
+---------------------
+
 local terminal    = "kitty"
 local fileManager = "thunar"
 local menu        = "hyprlauncher"
@@ -20,7 +24,7 @@ hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen("maximized", "toggle")) -- T
 -- Screenshot keybind
 
 -- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("flameshot gui -c -s"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/screenshot.sh"))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/screenshot.sh"))
 hl.bind(mainMod .. " + Print",hl.dsp.exec_cmd("grim - | wl-copy"))
 
 -- Move focus with mainMod + arrow keys
@@ -44,18 +48,27 @@ for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
     hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
-    hl.bind(mainMod .. "+ SHIFT + left", hl.dsp.window.move({ workspace = i }))
-    hl.bind(mainMod .. "+ SHIFT + right", hl.dsp.window.move({ workspace = i }))
 end
+
+-- Swap two windows in a workspace left and right
+hl.bind(mainMod .. "+ SHIFT + left", hl.dsp.window.swap({ next = true }))
+hl.bind(mainMod .. "+ SHIFT + right", hl.dsp.window.swap({ prev = true }))
 
 
 hl.bind(mainMod .. " + CTRL + left", hl.dsp.focus({workspace = "e-1"}))
 hl.bind(mainMod .. " + CTRL + right", hl.dsp.focus({workspace = "e+1" }))
 
+-- To switch between windows in a floating workspace:
+-- hl.bind(mainMod .. " + Tab", function()
+    -- hl.dispatch(hl.dsp.window.cycle_next())    -- Change focus to another window
+    -- hl.dispatch(hl.dsp.window.bring_to_top()) -- Bring it to the top
+-- end)
 
--- Example special workspace (scratchpad)
--- hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
--- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+-- Overlay workspaces
+hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
+hl.bind(mainMod .. " + A",         hl.dsp.workspace.toggle_special("discord"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(mainMod .. " + SHIFT + A", hl.dsp.window.move({ workspace = "special:discord" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
