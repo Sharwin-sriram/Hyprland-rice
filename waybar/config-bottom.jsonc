@@ -1,0 +1,103 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "height": 35,
+  "spacing": 5,
+  "margin-left": 10,
+  "margin-right": 10,
+  "margin-bottom": 0,
+  "reload_style_on_change": true,
+  "modules-left": ["hyprland/window"],
+  "modules-right": [
+    "tray",
+    "custom/network",
+    "custom/speed",
+    "custom/battery",
+    "pulseaudio"
+  ],
+  // Modules configuration
+  "hyprland/workspaces": {
+    "format": "{id}",
+    "all-outputs": "true",
+    "on-click": "activate",
+    "active-only": false,
+    "persistent-workspaces": {
+      "*": 5,
+    },
+
+  },
+  "tray": {
+    "spacing": 20
+  },
+  "cpu": {
+    "format": "{usage}%",
+    "tooltip": false,
+  },
+  "custom/memory": {
+    "exec": "$HOME/.config/waybar/scripts/Memory.sh",
+    "format": "{text}",
+    "return-type": "json",
+    "interval": 25,
+    "tooltip": true,
+  },
+  "temperature": {
+    "critical-threshold": 80,
+    "format": "{temperatureC}°C",
+  },
+  "custom/battery": {
+    "exec": "$HOME/.config/waybar/scripts/Battery.sh",
+    "return-type": "json",
+    "format": "{text}",
+    "interval": 60,
+  },
+  "custom/network": {
+    "format": "{text}",
+    "exec": "$HOME/.config/waybar/scripts/Network.sh",
+    "return-type": "json",
+    "interval": 10,
+    "tooltip": true,
+    "on-click": "nmtui"
+  },
+  "custom/speed": {
+    "format": "{text}",
+    "exec": "$HOME/.config/waybar/scripts/NetworkSpeed.sh",
+    "return-type": "json",
+    "interval": 1,
+    "tooltip": true,
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-icons": {
+      "default": ["", "", ""],
+    },
+    "on-click": "pavucontrol",
+  },
+  "custom/cpuSpeed": {
+    "format": "{text} RPM /",
+    "exec": "$HOME/.config/waybar/scripts/CPU.sh",
+    "return-type": "json",
+    "interval": 5,
+  },
+  "custom/gpuSpeed": {
+    "format": "RPM {text}",
+    "exec": "$HOME/.config/waybar/scripts/GPU.sh",
+    "return-type": "json",
+    "interval": 5,
+  },
+  "custom/temperatureGPU": {
+    "format": "{text}°C /",
+    "exec": "$HOME/.config/waybar/scripts/GPUTemperature.sh",
+    "return-type": "json",
+    "interval": 5,
+  },
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+    "menu-actions": {
+      "shutdown": "shutdown",
+      "reboot": "reboot",
+    },
+  },
+}

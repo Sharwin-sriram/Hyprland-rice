@@ -1,0 +1,75 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    transition: all 0.5s ease;
+    border-radius: 1em;
+}
+
+/* Window title on the left */
+#window {
+    padding: 4px 12px;
+    margin: 4px 0 4px 4px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Pill style for every right-side module */
+#tray,
+#custom-network,
+#custom-speed,
+#custom-battery,
+#pulseaudio {
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: 4px 12px;
+    margin: 4px 3px;
+    border-radius: 8px;
+}
+
+#custom-network {
+    padding: 5px 10px 3px 6px;
+}
+
+/* First module gets no extra left gap from the edge group */
+#tray {
+    margin-right: 6px;
+}
+
+/* Last module flush against the margin-right of the bar */
+#pulseaudio {
+    margin-right: 4px;
+}
+
+/* Color accents so modules are scannable at a glance */
+#custom-battery {
+    color: #a6e3a1;
+}
+
+#custom-network {
+    color: #89dceb;
+}
+
+#custom-speed {
+    color: #fab387;
+}
+
+#pulseaudio {
+    color: #cba6f7;
+}
+
+#tray {
+    padding: 2px 10px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
