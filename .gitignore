@@ -29,6 +29,9 @@ libreoffice/
 merkuro.calendarrc
 specialmailcollectionsrc
 spectaclerc
+/okularpartrc
+/okularrc
+Code - OSS/
 
 # Files
 QtProject.conf
