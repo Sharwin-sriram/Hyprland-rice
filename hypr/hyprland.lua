@@ -13,18 +13,19 @@ hl.monitor({
     mode     = "1920x1200@165",
     position = "0x0",
     scale    = "1",
+    vrr      = 1,
+    -- transform = 1 // To rotate the display
+    -- cm    = "srgb"
+    -- auto    - srgb for 8bpc, wide for 10bpc if supported (recommended)
+    -- srgb    - sRGB primaries (default)
+    -- dcip3   - DCI P3 primaries
+    -- dp3     - Apple P3 primaries
+    -- adobe   - Adobe RGB primaries
+    -- wide    - wide color gamut, BT2020 primaries
+    -- edid    - primaries from edid (known to be inaccurate)
+    -- hdr     - wide color gamut and HDR PQ transfer function (experimental)
+    -- hdredid - same as hdr with edid primaries (experimental)
 })
-
-
----------------------
----- MY PROGRAMS ----
----------------------
-
--- Set programs that you use
-local terminal    = "kitty"
-local fileManager = "thunar"
-local menu        = "hyprlauncher"
-
 
 -------------------
 ---- AUTOSTART ----
@@ -75,6 +76,7 @@ require("windowRules")
 
 -- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
 require("animations")
+require("SpecialFunctions")
 
 -- Default springs
 hl.animation({ leaf = "workspaces",    enabled = true,  speed = 2.5, bezier = "slide", style = "slide 100%" })
@@ -95,6 +97,8 @@ hl.animation({ leaf = "layersOut",     enabled = true,  speed = 1.5,  bezier = "
 hl.animation({ leaf = "fadeLayersIn",  enabled = true,  speed = 1.79, bezier = "almostLinear" })
 hl.animation({ leaf = "fadeLayersOut", enabled = true,  speed = 1.39, bezier = "almostLinear" })
 hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "quick" })
+
+hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 3.3, bezier = "specialEase", style = "slidevert 100%" })
 
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 -- "Smart gaps" / "No gaps when only"
@@ -141,9 +145,13 @@ hl.config({
 
 hl.config({
     misc = {
+        vrr = 1,
         force_default_wallpaper = 0,    -- Set to 0 or 1 to disable the anime mascot wallpapers
         disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
     },
+    cursor = {
+        no_hardware_cursors = 1
+    }
 })
 
 
