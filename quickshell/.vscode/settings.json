@@ -1,0 +1,11 @@
+{
+  "qml.languageServer.enabled": true,
+  "[qml]": {
+    "editor.defaultFormatter": "borkmann.qml",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "files.associations": {
+    "*.qml": "qml"
+  }
+}
