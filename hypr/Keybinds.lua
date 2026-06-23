@@ -17,9 +17,11 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + TAB", hl.dsp.layout("togglesplit"))    -- dwindle only
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen("maximized", "toggle")) -- Toggle fullscreen
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen("fullscreen", "toggle")) -- Toggle fullscreen
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen("maximize", "toggle")) -- Toggle fullscreen
 
 -- Screenshot keybind
 
@@ -35,12 +37,11 @@ hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 
 -- Create a new workspace and Focus on it
 hl.bind(mainMod .. " + D", hl.dsp.window.move({ workspace = "empty" }))
+hl.bind(mainMod .. " + code:386", hl.dsp.window.move({ workspace = "empty" }))
 
 -- Jump to a new empty workspace
 hl.bind(mainMod .. " + T", hl.dsp.focus({ workspace = "empty" }))
 
--- Switch windows using CTRL SUPER ARROW KEYS
--- hl.bind(mainMod .. " + CTRL", "left", "movewindow", "l")
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -51,10 +52,12 @@ for i = 1, 10 do
 end
 
 -- Swap two windows in a workspace left and right
+hl.bind(mainMod .. "+ SHIFT + up", hl.dsp.window.swap({ direction = "up" }))
+hl.bind(mainMod .. "+ SHIFT + down", hl.dsp.window.swap({ direction = "down" }))
 hl.bind(mainMod .. "+ SHIFT + left", hl.dsp.window.swap({ next = true }))
 hl.bind(mainMod .. "+ SHIFT + right", hl.dsp.window.swap({ prev = true }))
 
-
+-- Switch windows using CTRL SUPER ARROW KEYS
 hl.bind(mainMod .. " + CTRL + left", hl.dsp.focus({workspace = "e-1"}))
 hl.bind(mainMod .. " + CTRL + right", hl.dsp.focus({workspace = "e+1" }))
 
