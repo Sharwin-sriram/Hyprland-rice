@@ -243,7 +243,7 @@ hl.layer_rule({
     name  = "waybar-blur",
     match = { namespace = "waybar" },
     blur  = true,
-    ignore_alpha = 0.5,
+    ignore_alpha = 0.1,
 })
 
 -- Layer rules also return a handle.
