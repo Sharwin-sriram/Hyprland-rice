@@ -32,6 +32,10 @@ spectaclerc
 /okularpartrc
 /okularrc
 Code - OSS/
+swaylock/
+zed/
+spotify/
+spicetify/
 
 # Files
 QtProject.conf
@@ -39,3 +43,4 @@ user-dirs.locale
 mimeapps.list
 .gsd-keyboard.settings-ported
 filelightrc
+.env
