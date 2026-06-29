@@ -42,7 +42,7 @@ hl.bind(mainMod .. " + D", hl.dsp.window.move({ workspace = "empty" }))
 -- hl.bind(mainMod .. " + code:386", hl.dsp.window.move({ workspace = "empty" }))
 
 -- Jump to a new empty workspace
-hl.bind(mainMod .. " + T", hl.dsp.focus({ workspace = "empty" }))
+hl.bind(mainMod .. " + N", hl.dsp.focus({ workspace = "empty" }))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
