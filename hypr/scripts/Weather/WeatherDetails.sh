@@ -1,7 +1,7 @@
 source ~/.config/hypr/scripts/.env
 # TODO: Implement a weather widget in lockscreen
 
-LOCATION=$(curl -s ipinfo.io/json)
+LOCATION=$("$HOME/.config/hypr/scripts/Weather/Location.sh")
 
 LAT=$(echo "$LOCATION" | jq -r '.loc' | cut -d',' -f1)
 LON=$(echo "$LOCATION" | jq -r '.loc' | cut -d',' -f2)
