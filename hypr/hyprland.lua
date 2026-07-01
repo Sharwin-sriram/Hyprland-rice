@@ -36,6 +36,8 @@ hl.monitor({
 -- Or execute your favorite apps at launch like this:
 --
 require("startupApps")
+require("scrollOverview")
+require("scrollingLayout")
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -136,11 +138,6 @@ hl.config({
 })
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/ for more
-hl.config({
-	scrolling = {
-		fullscreen_on_one_column = true,
-	},
-})
 
 ----------------
 ----  MISC  ----
@@ -190,6 +187,13 @@ hl.gesture({
 	direction = "vertical",
 	action = "special",
 	workspace_name = "magic",
+})
+
+hl.gesture({
+	fingers = 4,
+	direction = "vertical",
+	action = "special",
+	workspace_name = "discord",
 })
 
 -- Example per-device config

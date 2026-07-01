@@ -21,7 +21,7 @@ hl.bind(mainMod .. " + Z", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + TAB", hl.dsp.layout("togglesplit")) -- dwindle only
+-- hl.bind(mainMod .. " + TAB", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen("fullscreen", "toggle")) -- Toggle fullscreen
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen("maximize", "toggle")) -- Toggle fullscreen
 
