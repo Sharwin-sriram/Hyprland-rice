@@ -70,7 +70,7 @@
     "format-icons": {
       "default": ["", "", ""],
     },
-    "on-click": "pavucontrol",
+    "on-click": "hyprpwcenter",
   },
   "custom/cpuSpeed": {
     "format": "{text} RPM /",
