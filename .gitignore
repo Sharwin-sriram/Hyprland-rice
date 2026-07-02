@@ -45,3 +45,5 @@ mimeapps.list
 .gsd-keyboard.settings-ported
 filelightrc
 .env
+
+*.md
