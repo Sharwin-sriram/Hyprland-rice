@@ -6,7 +6,7 @@ hl.config({
             scale = 0.8, -- preferred overview scale
             workspace_gap = 20,
             -- layout = "vertical", -- vertical or horizontal
-            layout = "verticalq", -- vertical or horizontal
+            layout = "vertical", -- vertical or horizontal
             wallpaper = 0, -- 0: global only, 1: per-workspace only, 2: both
             -- wallpaper = 1, -- 0: global only, 1: per-workspace only, 2: both
             blur = false, -- blur only the main overview wallpaper
