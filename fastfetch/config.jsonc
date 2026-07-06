@@ -74,19 +74,6 @@
       "type": "wm",
       "format": "{pretty-name} ({protocol-name})"
     },
-    // "wmtheme",
-    // "theme",
-    // "icons",
-    // "font",
-    // "cursor",
-    // {
-    //   "type": "terminal",
-    //   "format": "{pretty-name}"
-    // },
-    // {
-    // "type": "terminalfont",
-    // "format": "{name}"
-    // },
     {
       "type": "cpu",
       "format": "{name} - {freq-max}. {cores-physical}C/{cores-logical}T"
@@ -101,13 +88,8 @@
       "type": "command",
       "text": "echo 'AMD Radeom 780m'"
     },
-    // {
-    //   "type": "gpu",
-    //   "format": "{name} [{type}]"
-    // },
     "memory",
     "swap",
-    // "disk",
     {
       "key": "ipv4",
       "type": "localip",
@@ -125,7 +107,6 @@
       "format": ""
     },
     "poweradapter",
-    "break",
-    // "colors"
+    "break"
   ]
 }
