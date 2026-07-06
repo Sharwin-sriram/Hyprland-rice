@@ -30,6 +30,7 @@ hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen("maximize", "toggle"
 -- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("flameshot gui -c -s"))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/screenshot.sh"))
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("grim - | wl-copy"))
+hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("hyprpicker | wl-copy"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
