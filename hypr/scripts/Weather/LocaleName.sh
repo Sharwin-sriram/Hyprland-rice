@@ -1,6 +1,6 @@
-source ~/.config/hypr/scripts/Weather/Location.sh
+cache='/tmp/weatherInfo.json'
 
-STATE=$(echo "$LOCATION" | jq -r '.region')
-DISTRICT=$(echo "$WEATHER" | jq -r '.name')
+STATE=$(jq -r '.state' "$cache")
+DISTRICT=$(jq -r '.district' "$cache")
 
 echo "$DISTRICT, $STATE"

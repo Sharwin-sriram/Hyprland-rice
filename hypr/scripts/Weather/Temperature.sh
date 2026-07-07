@@ -1,5 +1,5 @@
-source ~/.config/hypr/scripts/Weather/Location.sh
+cache='/tmp/weatherInfo.json'
 
-TEMP=$(echo "$WEATHER" | jq -r '.main' | jq -r '.temp' | cut -d'.' -f1)
+TEMP=$(jq -r '.temp' "$cache")
 
 echo "$TEMP°C"

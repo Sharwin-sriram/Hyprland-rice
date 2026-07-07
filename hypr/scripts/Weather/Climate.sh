@@ -1,5 +1,11 @@
-source ~/.config/hypr/scripts/Weather/Location.sh
+cache='/tmp/weatherInfo.json'
 
-CLIMATE=$(echo "$WEATHER" | jq -r '.weather[0].main')
+CLIMATE=$(jq -r '.climate' "$cache")
+
+case "$CLIMATE" in
+    Clouds) CLIMATE="Cloudy" ;;
+    Rain)   CLIMATE="Rainy"  ;;
+    Clear)  CLIMATE="Sunny"  ;;
+esac
 
 echo "$CLIMATE"
