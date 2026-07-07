@@ -28,22 +28,25 @@ hl.config({
 
 hl.bind("ALT + SHIFT + TAB", function()
     hl.plugin.scrolloverview.overview("on")
-    hl.plugin.scrolloverview.navigate("left")
+    -- hl.plugin.scrolloverview.navigate("left")
     hl.plugin.scrolloverview.navigate("up")
 end)
 
 hl.bind("ALT + TAB" , function()
     hl.plugin.scrolloverview.overview("on")
-    hl.plugin.scrolloverview.navigate("right")
+    -- hl.plugin.scrolloverview.navigate("right")
     hl.plugin.scrolloverview.navigate("down")
 end)
 
+-- hl.bind("ALT", hl.dispatch(hl.plugin.scrolloverview.overview("off")))
+
 hl.define_submap("scrolloverview", function()
+    hl.bind("ALT", hl.plugin.scrolloverview.overview("off"), { release = true, transparent = true } )
     hl.bind("ALT + SHIFT + TAB",  hl.plugin.scrolloverview.navigate("left"))
     hl.bind("ALT + SHIFT + TAB",  hl.plugin.scrolloverview.navigate("up"))
-    hl.bind("ALT + TAB",   hl.plugin.scrolloverview.navigate("right"))
+    -- hl.bind("ALT + TAB",   hl.plugin.scrolloverview.navigate("right"))
     hl.bind("ALT + TAB",   hl.plugin.scrolloverview.navigate("down"))
-    hl.bind("left",   hl.plugin.scrolloverview.navigate("left"))
+    -- hl.bind("left",   hl.plugin.scrolloverview.navigate("left"))
     hl.bind("right",  hl.plugin.scrolloverview.navigate("right"))
     hl.bind("up",     hl.plugin.scrolloverview.navigate("up"))
     hl.bind("down",   hl.plugin.scrolloverview.navigate("down"))
@@ -56,7 +59,7 @@ hl.define_submap("scrolloverview", function()
         hl.plugin.scrolloverview.window("select")
         hl.plugin.scrolloverview.overview("off")
     end, { mouse = true })
-    -- hl.bind("mouse:274", hl.plugin.scrolloverview.window("close"), { mouse = true })
+    hl.bind("mouse:274", hl.plugin.scrolloverview.window("close"), { mouse = true })
 end)
 
 -- Example Hyprland bind that keeps working inside the submap:

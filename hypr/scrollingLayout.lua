@@ -1,3 +1,5 @@
+local mainMod = "SUPER"
+
 hl.config({ 
     scrolling = {
 	    fullscreen_on_one_column = true,
@@ -8,3 +10,10 @@ hl.config({
         -- direction = "down"
     } 
 })
+
+-- To switch between windows in a floating/scrolling workspace:
+
+-- hl.bind(mainMod .. " + Tab", function()
+-- hl.dispatch(hl.dsp.window.cycle_next())    -- Change focus to another window
+-- hl.dispatch(hl.dsp.window.bring_to_top()) -- Bring it to the top
+-- end)
