@@ -6,11 +6,11 @@
     "separator": "-> ", // Separator between keys and values
     "color": {
       "keys": "blue", // Key color
-      "title": "cyan" // Title color
+      "title": "cyan", // Title color
     },
     "key": {
       "width": 15, // Aligns keys to this width
-      "type": "string" // string, icon, both, or none
+      "type": "string", // string, icon, both, or none
     },
     "bar": {
       "width": 10, // Width of percentage bars
@@ -24,9 +24,9 @@
       "color": {
         "green": "green",
         "yellow": "light_yellow",
-        "red": "light_red"
-      }
-    }
+        "red": "light_red",
+      },
+    },
   },
   "logo": {
     "type": "auto", // Logo type: auto, builtin, small, file, etc.
@@ -36,30 +36,31 @@
     "padding": {
       "top": 0, // Top padding
       "left": 2, // Left padding
-      "right": 2 // Right padding
+      "right": 2, // Right padding
     },
-    "color": { // Override logo colors
+    "color": {
+      // Override logo colors
       // "1": "blue",
       // "2": "green"
-    }
+    },
   },
   "modules": [
     {
       "type": "title",
-      "format": "{user-name-colored}"
+      "format": "{user-name-colored}",
     },
     "separator",
     {
       "type": "os",
-      "format": "{name}"
+      "format": "{name}",
     },
     {
       "type": "host",
-      "format": "{vendor} Legion 5"
+      "format": "{vendor} Legion 5",
     },
     {
       "type": "kernel",
-      "format": "{sysname}"
+      "format": "{sysname}",
     },
     "uptime",
     // "packages",
@@ -67,46 +68,46 @@
     {
       "key": "Display",
       "type": "display",
-      "format": "{width}x{height}@{refresh-rate}Hz"
+      "format": "{width}x{height}@{refresh-rate}Hz",
     },
     "de",
     {
       "type": "wm",
-      "format": "{pretty-name} ({protocol-name})"
+      "format": "{pretty-name} ({protocol-name})",
     },
     {
       "type": "cpu",
-      "format": "{name} - {freq-max}. {cores-physical}C/{cores-logical}T"
+      "format": "{name} - {freq-max}. {cores-physical}C/{cores-logical}T",
     },
     {
       "key": "Discrete",
       "type": "command",
-      "text": "echo 'NVIDIA GeForce RTX 5050'"
+      "text": "echo 'NVIDIA GeForce RTX 5050'",
     },
     {
       "key": "Integrated",
       "type": "command",
-      "text": "echo 'AMD Radeom 780m'"
+      "text": "echo 'AMD Radeom 780m'",
     },
     "memory",
     "swap",
     {
       "key": "ipv4",
       "type": "localip",
-      "format": "{ipv4}"
+      "format": "{ipv4}",
     },
     {
       "key": "Battery",
       "type": "battery",
-      "format": "{capacity} {status} "
+      "format": "{capacity} [{status}]",
     },
     {
       "key": "DTE",
       "type": "command",
       "text": "echo ${time-hours}",
-      "format": ""
+      "format": "",
     },
     "poweradapter",
-    "break"
-  ]
+    "break",
+  ],
 }
