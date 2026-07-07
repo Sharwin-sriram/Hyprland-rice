@@ -26,6 +26,6 @@ format_speed() {
 RX_DISPLAY=$(format_speed $RX_KB)
 TX_DISPLAY=$(format_speed $TX_KB)
 
-TOOLTIP="↓${RX_DISPLAY} ↑${TX_DISPLAY}"
-TEXT="↓${RX_DISPLAY}"
+TOOLTIP="⇣${RX_DISPLAY} ⇡${TX_DISPLAY}"
+TEXT="⇣${RX_DISPLAY}"
 printf '{"text":"%s","tooltip":"%s","class":"speed"}\n' "$TEXT" "$TOOLTIP"
