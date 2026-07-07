@@ -2,33 +2,43 @@
 ---- MY PROGRAMS ----
 ---------------------
 
+-- Move cursor to an absolute position (global coordinates, spans all monitors)
+local function move_cursor_to(x, y)
+    hl.dispatch(hl.dsp.cursor.move({ x = x, y = y }))
+end
+
 local terminal = "kitty"
 local fileManager = "thunar"
 local menu = "hyprlauncher"
+local lockscreen = "hyprlock"
+local lockMenu = "wlogout"
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal), { repeating = true })
 local closeWindowBind = hl.bind(mainMod .. " + W", hl.dsp.window.close(), { repeating = true })
--- closeWindowBind:set_enabled(false)
 hl.bind(
 	mainMod .. " + M",
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
+hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal), { repeating = true })
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + Z", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd(lockscreen))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + O", function() 
+	hl.dispatch(hl.dsp.exec_cmd(lockMenu))
+    move_cursor_to(1920,0)
+end)
+
+hl.bind(mainMod .. " + Z", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 -- hl.bind(mainMod .. " + TAB", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen("fullscreen", "toggle")) -- Toggle fullscreen
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen("maximize", "toggle")) -- Toggle fullscreen
 
 -- Screenshot keybind
-
--- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("flameshot gui -c -s"))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/screenshot.sh"))
+
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("grim - | wl-copy"))
 hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("hyprpicker | wl-copy"))
 
@@ -40,7 +50,6 @@ hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
 
 -- Create a new workspace and Focus on it
 hl.bind(mainMod .. " + D", hl.dsp.window.move({ workspace = "empty" }))
--- hl.bind(mainMod .. " + code:386", hl.dsp.window.move({ workspace = "empty" }))
 
 -- Jump to a new empty workspace
 hl.bind(mainMod .. " + N", hl.dsp.focus({ workspace = "empty" }))
@@ -63,12 +72,6 @@ hl.bind(mainMod .. "+ SHIFT + right", hl.dsp.window.swap({ prev = true }))
 hl.bind(mainMod .. " + CTRL + left", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + CTRL + right", hl.dsp.focus({ workspace = "e+1" }))
 
--- To switch between windows in a floating workspace:
--- hl.bind(mainMod .. " + Tab", function()
--- hl.dispatch(hl.dsp.window.cycle_next())    -- Change focus to another window
--- hl.dispatch(hl.dsp.window.bring_to_top()) -- Bring it to the top
--- end)
-
 -- Overlay workspaces
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + A", hl.dsp.workspace.toggle_special("discord"))
@@ -89,21 +92,25 @@ hl.bind(
 	hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+"),
 	{ locked = true, repeating = true }
 )
+
 hl.bind(
 	"XF86AudioLowerVolume",
 	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"),
 	{ locked = true, repeating = true }
 )
+
 hl.bind(
 	"XF86AudioMute",
 	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
 	{ locked = true, repeating = true }
 )
+
 hl.bind(
 	"XF86AudioMicMute",
 	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
 	{ locked = true, repeating = true }
 )
+
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
 
