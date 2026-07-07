@@ -15,14 +15,14 @@
 #   full        read every pixel - most precise, slowest
 #   thumb       fixed 512×512 crop, fastest
 #   wal         uses ImageMagick `convert`, like pywal
-backend = "fastresize"
+backend = "resized"
 
 # ~ Palette ~
 # How extracted pixels are turned into a 16-color terminal scheme.
 #   salience  perceptually prominent colors (default)
 #   ansi      classic TTY layout: color1=red, color2=green, and so on
 #   kmeans    k-means clustering in Lab color space
-palette = "salience"
+palette = "ansi"
 
 # ~ Style ~
 # dark (default) - dark background, light foreground
@@ -35,7 +35,7 @@ style = "dark"
 #              balanced(default), distributed, high, low
 #   intensity: Shifts the palette toward softer or punchier colors
 #              normal(default), pastel, vibrant
-salience = { sampling = "balanced", intensity = "normal" }
+salience = { sampling = "distributed", intensity = "pastel" }
 
 # ~ Kmeans options ~
 # Only applies when palette = "kmeans".
@@ -62,7 +62,7 @@ salience = { sampling = "balanced", intensity = "normal" }
 # ~ Alpha ~
 # Exposes an `alpha` variable inside templates (e.g. for compositor opacity).
 # Has no effect outside of templating. Default: 100 (fully opaque).
-#alpha = 100
+alpha = 70
 
 [templates]
 # Render color variables into any config file. Use single quotes for paths
@@ -74,8 +74,11 @@ salience = { sampling = "balanced", intensity = "normal" }
 #   max_depth only when template/target are directories - limits recursion depth
 # Examples:
 #   zathura  = { template = 'zathura',  target = '~/.config/zathura/zathurarc' }
-#   dunst    = { template = 'dunst',    target = '~/.config/dunst/dunstrc' }
-#   kitty    = { template = 'kitty',    target = '~/.config/kitty/kitty.conf' }
+  # dunst    = { template = 'dunst',    target = '~/.config/dunst/dunstrc' }
+  kitty      = { template = 'kitty',    target = '~/.config/theme/kitty.conf' }
+  waybar     = { template = 'WaybarCss',    target = '~/.config/theme/waybar.css' }
+  wlogout    = { template = 'wlogout',    target = '~/.config/theme/wlogout.css' }
+
 #   # directory: template every file inside src/ into dst/
 #   glava    = { template = 'glava/',   target = '~/.config/glava/', max_depth = 1 }
 #   # pywal compatibility
