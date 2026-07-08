@@ -1,7 +1,7 @@
-function batteryMode()
+function gameMode()
 	hl.monitor({
 		output = "",
-		mode = "1920x1200@60",
+		mode = "1920x1200@165",
 		position = "0x0",
 		scale = "1",
 	})
@@ -33,9 +33,9 @@ function batteryMode()
 		},
 
 		animations = {
-			enabled = false,
+			enabled = true,
 		},
 	})
 end
 
--- batteryMode()
+-- gameMode()

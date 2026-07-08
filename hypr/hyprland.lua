@@ -1,7 +1,3 @@
--- You can (and should!!) split this configuration into multiple files
--- Create your files separately and then require them like this:
--- require("myColors")
-
 ------------------
 ---- MONITORS ----
 ------------------
@@ -26,25 +22,14 @@ hl.monitor({
 	-- hdredid - same as hdr with edid primaries (experimental)
 })
 
--------------------
----- AUTOSTART ----
--------------------
-
--- See https://wiki.hypr.land/Configuring/Basics/Autostart/
-
--- Autostart necessary processes (like notifications daemons, status bars, etc.)
--- Or execute your favorite apps at launch like this:
 --
 require("startupApps")
 require("scrollOverview")
 require("scrollingLayout")
-require("batterySaver")
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
 -------------------------------
-
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
 require("environmentVariables")
 
@@ -267,3 +252,7 @@ hl.window_rule({
 	move = "20 monitor_h-120",
 	float = true,
 })
+
+require("gameMode")
+require("batterySaver")
+require("theme")

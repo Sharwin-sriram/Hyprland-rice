@@ -10,7 +10,7 @@ end
 local terminal = "kitty"
 local fileManager = "thunar"
 local menu = "hyprlauncher"
-local lockscreen = "hyprlock"
+local lockscreen = "loginctl lock-session"
 local lockMenu = "wlogout"
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
