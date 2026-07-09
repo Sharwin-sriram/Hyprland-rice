@@ -15,5 +15,5 @@ text-color = {{color1}}
 
 prompt-text = " : "
 
-background-color = {{background}}c0
+background-color = {{background}}a0
 selection-color =  {{foreground}}
