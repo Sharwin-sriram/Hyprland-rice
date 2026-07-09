@@ -29,8 +29,8 @@
     },
   },
   "logo": {
-    "type": "auto", // Logo type: auto, builtin, small, file, etc.
-    "source": "arch", // Built-in logo name or file path
+    "type": "file", // Logo type: auto, builtin, small, file, etc.
+    "source": "~/.config/fastfetch/hyprland", // Built-in logo name or file path
     // "width": 60, // Width in characters
     // "height": 30, // Height in characters
     "padding": {
@@ -39,9 +39,10 @@
       "right": 2, // Right padding
     },
     "color": {
-      // Override logo colors
-      // "1": "blue",
-      // "2": "green"
+      "2": "38;2;0;230;207", // brightest teal
+      "6": "38;2;0;218;214", // teal-cyan
+      "4": "38;2;0;200;225", // cyan-blue
+      "7": "38;2;0;185;234", // deep blue
     },
   },
   "modules": [
@@ -73,7 +74,7 @@
     "de",
     {
       "type": "wm",
-      "format": "{pretty-name} ({protocol-name})",
+      "format": "{pretty-name}",
     },
     {
       "type": "cpu",
