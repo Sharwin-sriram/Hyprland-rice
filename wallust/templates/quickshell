@@ -1,0 +1,5 @@
+const colors = {
+	bg: "{{color1}}",
+	fg: "{{foreground}}",
+	muted: "{{color8}}"
+}
