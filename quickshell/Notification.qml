@@ -13,6 +13,7 @@ Scope {
 
     NotificationServer {
         id: server
+        
         actionsSupported: true
         bodySupported: true
         imageSupported: true
