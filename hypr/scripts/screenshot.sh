@@ -1,6 +1,9 @@
 # TODO: FULLY IMPLEMENT A SCREENSHOT SCRIPT
 
-ss=$(grim -g "$(slurp -w 0)" - | wl-copy)
-if [$ss -e "selection cancelled"]
-    notify-send "Screenshot cancelled" "Select a region"
+if ! region=$(slurp -w 0); then
+    notify-send "Select a region"
+    exit 1
 fi
+
+grim -g "$region" - | wl-copy
+notify-send "screenshot" "copied to clipboard"

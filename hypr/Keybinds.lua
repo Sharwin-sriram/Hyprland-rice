@@ -63,9 +63,6 @@ for i = 1, 10 do
 	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
-hl.bind(mainMod .. " + CTRL + SHIFT + left", hl.dsp.window.move({ workspace = "e-1" }))
-hl.bind(mainMod .. " + CTRL + SHIFT + right", hl.dsp.window.move({ workspace = "e+1", workspace = "empty" }))
-
 -- Swap two windows in a workspace left and right
 hl.bind(mainMod .. "+ SHIFT + up", hl.dsp.window.swap({ direction = "up" }))
 hl.bind(mainMod .. "+ SHIFT + down", hl.dsp.window.swap({ direction = "down" }))
