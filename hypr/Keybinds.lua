@@ -9,7 +9,8 @@ end
 
 local terminal = "kitty"
 local fileManager = "thunar"
-local menu = "hyprlauncher"
+-- local menu = "hyprlauncher"
+local menu = "tofi-drun -c ~/.config/tofi/config --drun-launch=true --num-results 7 --font /usr/share/fonts/TTF/JetBrainsMonoNerdFont-Regular.ttf --hint-font false"
 local lockscreen = "loginctl lock-session"
 local lockMenu = "wlogout"
 
@@ -61,6 +62,9 @@ for i = 1, 10 do
 	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
 	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
+
+hl.bind(mainMod .. " + CTRL + SHIFT + left", hl.dsp.window.move({ workspace = "e-1" }))
+hl.bind(mainMod .. " + CTRL + SHIFT + right", hl.dsp.window.move({ workspace = "e+1", workspace = "empty" }))
 
 -- Swap two windows in a workspace left and right
 hl.bind(mainMod .. "+ SHIFT + up", hl.dsp.window.swap({ direction = "up" }))
