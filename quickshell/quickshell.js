@@ -1,5 +1,5 @@
 const colors = {
-	bg: "#21325B",
-	fg: "#EFE7E0",
-	muted: "#2F2A29"
+	bg: "#541A3D",
+	fg: "#FCA4A0",
+	muted: "#552742"
 }
