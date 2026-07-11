@@ -254,5 +254,5 @@ hl.window_rule({
 })
 
 require("gameMode")
-require("batterySaver")
+require("ultraBatterySaver")
 require("theme")
