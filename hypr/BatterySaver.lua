@@ -1,4 +1,4 @@
-function ultraBatteryMode()
+function batteryMode()
 	hl.monitor({
 		output = "",
 		mode = "1920x1200@60",
@@ -7,19 +7,12 @@ function ultraBatteryMode()
 	})
 	hl.config({
 		general = {
-			gaps_in = 0,
-			gaps_out = 0,
-
-			border_size = 0,
 			resize_on_border = false,
 			allow_tearing = false,
 			layout = "dwindle",
 		},
 
 		decoration = {
-			rounding = 0,
-			rounding_power = 0,
-
 			active_opacity = 1.0,
 			inactive_opacity = 1.0,
 
@@ -33,9 +26,9 @@ function ultraBatteryMode()
 		},
 
 		animations = {
-			enabled = false,
+			enabled = true,
 		},
 	})
 end
 
--- ultraBatteryMode()
+-- batteryMode()
