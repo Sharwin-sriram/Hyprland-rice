@@ -4,21 +4,22 @@ import QtQuick.Layouts
 import Quickshell.Io
 import Quickshell
 import QtQuick
+import "quickshell.js" as Config
 
 // TODO: Add more functionality to the bar and make the bar look better
 PanelWindow {
     id: root
 
-    property color colBg: "#2D6470"
+    property color colBg: Config.colors.bg
     property color colFg: "#0B1724"
-    property color colText: "#BFD9BD"
-    property color colBlue: "#3C98AA"
+    property color colText: Config.colors.fg 
+    property color colBlue: Config.colors.muted
     property string fontFamily: "JetBrainsMono Nerd Font"
     property int fontSize: 18
 
     property int currentWorkspace: Hyprland.focusedWorkspace?.id
     property int totalWorkspaces: 5
-    property int focusedWorkspaces: currentWorkspace > totalWorkspaces ? currentWorkspace : totalWorkspaces
+    property int focusedWorkspaces: currentWorkspace > totalWorkspaces ? currentWorkspace - totalWorkspaces : totalWorkspaces
 
     // System Properties
 
@@ -154,7 +155,6 @@ PanelWindow {
                     anchors.fill: parent
                     cursorShape: Qt.PointingHandCursor
                     onClicked: {
-                        console.log("clicked ws", index + 1);
                         Hyprland.dispatch("hl.dsp.focus({ workspace = " + (index + 1) + " })");
                     }
                 }
@@ -180,11 +180,11 @@ PanelWindow {
                 bold: true
             }
             Timer {
-                interval: 10000
+                interval: 20000
                 running: true
                 repeat: true
                 onTriggered: {
-                    tempProc.running = true;
+                    memProc.running = true;
                 }
             }
         }
