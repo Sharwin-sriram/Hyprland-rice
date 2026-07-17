@@ -20,7 +20,9 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 local closeWindowBind = hl.bind(mainMod .. " + W", hl.dsp.window.close(), { repeating = true })
 hl.bind(
 	mainMod .. " + M",
-	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
+	-- Nah exiting clean is for pussies
+	hl.dsp.exec_cmd("~/.config/scripts/fuckOff.sh")
+	-- hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal), { repeating = true })
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))

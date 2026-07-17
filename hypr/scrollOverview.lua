@@ -41,7 +41,6 @@ end)
 -- hl.bind("ALT", hl.dispatch(hl.plugin.scrolloverview.overview("off")))
 
 hl.define_submap("scrolloverview", function()
-    -- hl.bind("ALT", hl.plugin.scrolloverview.overview("off"), { release = true, transparent = true } )
     -- hl.bind("ALT + SHIFT + TAB",  hl.plugin.scrolloverview.navigate("left"))
     hl.bind("ALT + SHIFT + TAB",  hl.plugin.scrolloverview.navigate("up"))
     -- hl.bind("ALT + TAB",   hl.plugin.scrolloverview.navigate("right"))
@@ -52,6 +51,7 @@ hl.define_submap("scrolloverview", function()
     hl.bind("down",   hl.plugin.scrolloverview.navigate("down"))
     hl.bind("return", hl.plugin.scrolloverview.overview("select"))
     hl.bind("escape", hl.plugin.scrolloverview.overview("off"))
+    -- hl.bind("ALT", hl.plugin.scrolloverview.overview("toggle"))
     
     hl.bind("mouse:272", function()
         -- Select the clicked window, or just the workspace if no window was clicked, then close the overview. This is the default behaviour if submap is not defined.
