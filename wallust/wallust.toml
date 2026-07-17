@@ -1,96 +1,46 @@
-# wallust v4-alpha sample configuration
-#
 # Copy this file to ~/.config/wallust/wallust.toml to get started.
-# All options are optional - wallust works fine with an empty config file.
 #
 # Documentation: https://explosion-mental.codeberg.page/wallust/
 # Man page:      man wallust.5
-# Migrating from v2/v3? run `wallust migrate`
 
 # ~ Backend ~
-# How the image is read to extract pixels. Faster backends trade some
-# precision for speed. For most images the difference is invisible.
-#   fastresize  SIMD-accelerated resize (default, recommended)
-#   resized     standard resize, aspect ratio preserved
-#   full        read every pixel - most precise, slowest
-#   thumb       fixed 512×512 crop, fastest
-#   wal         uses ImageMagick `convert`, like pywal
-backend = "fastresize"
+backend = "resized"
 
 # ~ Palette ~
-# How extracted pixels are turned into a 16-color terminal scheme.
-#   salience  perceptually prominent colors (default)
-#   ansi      classic TTY layout: color1=red, color2=green, and so on
-#   kmeans    k-means clustering in Lab color space
 palette = "kmeans"
 
 # ~ Style ~
-# dark (default) - dark background, light foreground
-# light          - light background, dark foreground
 style = "dark"
 
 # ~ Salience options ~
-# Only applies when palette = "salience".
-#   sampling:  How colors are picked from the histogram
-#              balanced(default), distributed, high, low
-#   intensity: Shifts the palette toward softer or punchier colors
-#              normal(default), pastel, vibrant
 salience = { sampling = "low", intensity = "vibrant" }
 
 # ~ Kmeans options ~
-# Only applies when palette = "kmeans".
-#   k:         Number of color clusters (default: 16)
-#   min_dist:  Minimum perceptual distance (delta E) between kept colors (default: 10.0)
-#              raise to get more distinct colors, lower to keep more similar ones
-kmeans = { k = 16, min_dist = 20.0 }
+kmeans = { k = 16, min_dist = 35.0 }
 
 # ~ 16-color mode ~
-# Dims color8–color14 (the bold/bright row) to give the illusion of a fuller
-# palette, usually terminals use those slots for bold text.
-use16cols = true
+use16cols = false
 
 # ~ Contrast check ~
-# Ensures a readable contrast between foreground and background.
-# Leave disabled unless you frequently get unreadable output.
 check_contrast = true
 
 # ~ Saturation ~
-# Nudge color saturation after palette generation. 1–100.
-# Values above ~60 intensify colors; below ~40 mute them.
-saturation = 60
+saturation = 50
 
 # ~ Alpha ~
-# Exposes an `alpha` variable inside templates (e.g. for compositor opacity).
-# Has no effect outside of templating. Default: 100 (fully opaque).
 alpha = 70
 
 [templates]
 qs    	   = { template = 'quickshell',    target = '~/.config/quickshell/quickshell.js' }
 kitty      = { template = 'kitty',    target = '~/.config/theme/kitty.conf' }
 waybar     = { template = 'WaybarCss',    target = '~/.config/theme/waybar.css' }
-wlogout    = { template = 'wlogout',    target = '~/.config/theme/wlogout.css' }
 hypr 	   = { template = 'hypr', target = '~/.config/hypr/theme.lua'}
 tofi 	   = { template = 'tofi', target = '~/.config/tofi/config'}
 vscode 	   = { template = 'vscode', target = '~/.config/theme/code.json'}
-
-#   # directory: template every file inside src/ into dst/
-#   glava    = { template = 'glava/',   target = '~/.config/glava/', max_depth = 1 }
-#   # pywal compatibility
-#   wal      = { template = 'wal/',     target = '~/.cache/wal/', pywal = true }
+discord    = { template = 'discord', target = '~/.cache/hellwal/discord-colors.css'}
 
 [hooks]
-# vscode_merge = "~/.config/wallust/vscode-apply.sh"
-# Shell commands run after every palette generation, skip all with --no-hooks
-# Examples:
-## reload your compositor
-#picom    = "pkill -USR1 picom"
-## set a random wallpaper with swww
-#wallpaper = """swww img "$(find ~/Pictures/Wallpapers -type f | shuf -n 1)" """
+themecord = "themecord"
+quickshell = "touch ~/.config/quickshell/shell.qml"
 
 [templated_hooks]
-# Like [hooks] but the command is rendered as a Jinja2 template first, giving
-# access to the same variables as templates: colors, wallpaper, palette, etc.
-# Skip all with --no-templated-hooks.
-# Examples:
-#notify = "notify-send 'wallust' 'Generated from {{wallpaper | basename}} ({{palette}})'"
-waybar = "echo '#{background}' > /tmp/wallust-bg"
