@@ -40,6 +40,7 @@ BraveSoftware/
 fontconfig/
 qt6ct/
 pacseek/
+*/dist/
 
 # Files
 QtProject.conf
