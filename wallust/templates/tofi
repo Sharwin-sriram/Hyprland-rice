@@ -11,7 +11,7 @@ num-results = 5
 font = JetBrainsMono Nerd Font
 font-size = 24
 
-text-color = {{color1}}
+text-color = {{color5}}
 
 prompt-text = " : "
 

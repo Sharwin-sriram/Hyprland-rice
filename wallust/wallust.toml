@@ -36,7 +36,6 @@ kitty      = { template = 'kitty',    target = '~/.config/theme/kitty.conf' }
 waybar     = { template = 'WaybarCss',    target = '~/.config/theme/waybar.css' }
 hypr 	   = { template = 'hypr', target = '~/.config/hypr/theme.lua'}
 tofi 	   = { template = 'tofi', target = '~/.config/tofi/config'}
-vscode 	   = { template = 'vscode', target = '~/.config/theme/code.json'}
 discord    = { template = 'discord', target = '~/.cache/hellwal/discord-colors.css'}
 
 [hooks]

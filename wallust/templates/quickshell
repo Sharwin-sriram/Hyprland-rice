@@ -1,5 +1,6 @@
 const colors = {
 	bg: "{{color1}}",
 	fg: "{{foreground}}",
-	muted: "{{color8}}"
+	text: "{{color3}}",
+	muted: "{{color6}}"
 }
