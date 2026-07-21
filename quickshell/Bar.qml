@@ -9,10 +9,15 @@ import "quickshell.js" as Config
 // TODO: Add more functionality to the bar and make the bar look better
 PanelWindow {
     id: root
+    margins {
+        top: 4
+        right: 5
+        left: 5
+    }
 
     property color colBg: Config.colors.bg
-    property color colFg: "#0B1724"
-    property color colText: Config.colors.fg 
+    property color colFg: Config.colors.text
+    property color colText: Config.colors.fg
     property color colBlue: Config.colors.muted
     property string fontFamily: "JetBrainsMono Nerd Font"
     property int fontSize: 18
@@ -35,8 +40,16 @@ PanelWindow {
     anchors.left: true
     anchors.right: true
 
-    color: colBg
+    color: "transparent"
     implicitHeight: 35
+
+    Rectangle {
+        anchors.fill: parent
+        color: root.colBg
+        border.color: root.colBorder
+        // border.width: 2
+        radius: 8
+    }
 
     Process {
         id: cpuProc
@@ -99,7 +112,7 @@ PanelWindow {
         anchors.margins: 8
 
         Text {
-            text: "Temp: " + temp + ""
+            text: temp + "°C"
             color: root.colText
             font {
                 family: root.fontFamily
@@ -115,6 +128,7 @@ PanelWindow {
                 }
             }
         }
+        
 
         Text {
             text: "CPU: " + cpuUsage + "%"
