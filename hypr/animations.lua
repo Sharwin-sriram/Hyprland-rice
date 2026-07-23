@@ -7,6 +7,7 @@ hl.curve("slide", { type = "bezier", points = { { 1, 0 }, { 0, 1 } } })
 hl.curve("overshoot", { type = "bezier", points = { { 0.5, 0.9 }, { 0.1, 1.1 } } })
 hl.curve("rubber", { type = "spring", mass = 1, stiffness = 70, dampening = 10 })
 
+hl.curve("window", { type = "spring", mass = 0.6, stiffness = 450, dampening = 35})
 hl.curve("easy", { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
 
 hl.curve("specialEase", { type = "bezier", points = { { 0.25, 0.1 }, { 0.25, 1.0 } } })
