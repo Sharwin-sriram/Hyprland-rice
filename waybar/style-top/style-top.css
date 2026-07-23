@@ -16,7 +16,7 @@ window#waybar {
 
 .modules-right,
 .modules-left {
-    border-bottom: 4px solid sandybrown;
+    /* border-bottom: 4px solid sandybrown; */
     border-radius: 0.5em;
     margin: 0 10px;
 }
