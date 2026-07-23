@@ -1,6 +1,7 @@
-const bar = {
-    fontFamily: "JetBrainsMono Nerd Font",
-    fontSize: 16,
+const fontWidget = {
+    familyHeading: "Anurati",
+    familySub: "ITC Blair Condensed Medium",
+    size: 100,
     height: 30
 }
 
