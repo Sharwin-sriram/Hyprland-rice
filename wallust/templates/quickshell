@@ -1,6 +1,9 @@
-const colors = {
-	bg: "{{color1}}",
-	fg: "{{foreground}}",
-	text: "{{color3}}",
-	muted: "{{color6}}"
+pragma Singleton
+import QtQuick
+
+QtObject {
+    property color bg: "{{color1}}"
+    property color fg: "{{foreground}}"
+    property color text: "{{color3}}"
+    property color muted: "{{color6}}"
 }

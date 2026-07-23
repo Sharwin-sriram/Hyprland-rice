@@ -31,7 +31,7 @@ saturation = 50
 alpha = 70
 
 [templates]
-qs    	   = { template = 'quickshell',    target = '~/.config/quickshell/quickshell.js' }
+qs    	   = { template = 'quickshell',    target = '~/.config/quickshell/Colors.qml' }
 kitty      = { template = 'kitty',    target = '~/.config/theme/kitty.conf' }
 waybar     = { template = 'WaybarCss',    target = '~/.config/theme/waybar.css' }
 hypr 	   = { template = 'hypr', target = '~/.config/hypr/theme.lua'}
