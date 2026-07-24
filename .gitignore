@@ -49,4 +49,4 @@ mimeapps.list
 filelightrc
 .env
 
-*.md
+# *.md
