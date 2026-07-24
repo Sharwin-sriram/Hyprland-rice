@@ -1,0 +1,10 @@
+[Unit]
+Description=Fetch Spotify Album Art Timer
+
+[Timer]
+OnActiveSec=5
+OnUnitActiveSec=5
+Unit=spotify-art.service
+
+[Install]
+WantedBy=timers.target
