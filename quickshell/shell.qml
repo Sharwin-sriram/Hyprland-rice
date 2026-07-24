@@ -2,7 +2,8 @@ import Quickshell
 
 ShellRoot {
     // Bar {}
-    // Notification {}
+    // LogoutMenu {}
+    Notification {}
     DesktopWidget {}
     // WallpaperSwitcher {}
 }

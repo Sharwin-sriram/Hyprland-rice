@@ -12,8 +12,11 @@ PanelWindow {
 
     property string day: ""
     property string date: ""
-    property string time: ""
-
+    property string hours: ""
+    property string min: ""
+    property bool colonVisible: true
+    property bool colon: true
+    // Colors
     property color fg: Colors.fg
     property color bg: Colors.bg
     property color text: Colors.text
@@ -61,16 +64,42 @@ PanelWindow {
     }
 
     Process {
-        id: timeProc
+        id: timeH
 
-        command: ["sh","-c","date +'%I:%M %p'"]
+        command: ["sh", "-c", "date +'%I'"]
         Component.onCompleted: running = true
 
         stdout: SplitParser {
             onRead: (data) => {
-                time = data;
+                hours = data;
             }
         }
+
+    }
+
+    Process {
+        id: timeM
+
+        command: ["sh", "-c", "date +'%M %p'"]
+        Component.onCompleted: running = true
+
+        stdout: SplitParser {
+            onRead: (data) => {
+                min = data;
+            }
+        }
+
+    }
+
+    Process {
+        id: colonProc
+
+        stdout: SplitParser {
+            onRead: (data) => {
+                colon = colon === ":" ? " " : ":";
+            }
+        }
+
     }
 
     Timer {
@@ -84,11 +113,23 @@ PanelWindow {
     }
 
     Timer {
-        interval: 10000
+        interval: 60000
         running: true
         repeat: true
         onTriggered: {
-            timeProc.running = true;
+            timeH.running = true;
+            timeM.running = true;
+        }
+    }
+
+    Timer {
+        interval: 1000
+        running: true
+        repeat: true
+        onTriggered: {
+            if (colon)
+                clock.colonVisible = !clock.colonVisible;
+
         }
     }
 
@@ -107,7 +148,7 @@ PanelWindow {
             text: clock.day.toUpperCase()
             // text: ""
             color: clock.fg
-            anchors.horizontalCenter: parent.horizontalCenter
+            Layout.alignment: Qt.AlignHCenter
 
             font {
                 family: Config.fontWidget.familyHeading
@@ -123,7 +164,7 @@ PanelWindow {
             text: clock.date.toUpperCase()
             // color: clock.muted
             color: "#FFFFFF"
-            anchors.horizontalCenter: parent.horizontalCenter
+            Layout.alignment: Qt.AlignHCenter
 
             font {
                 family: Config.fontWidget.familySub
@@ -132,17 +173,50 @@ PanelWindow {
 
         }
 
-        Text {
-            id: timeLabel
+        RowLayout {
+            Layout.alignment: Qt.AlignHCenter
+            // anchors.horizontalCenter: parent.horizontalCenter
+            spacing: 5
 
-            text: "─ " + clock.time.toUpperCase() + " ─"
-            color: "#FFF"
-            anchors.horizontalCenter: parent.horizontalCenter
+            Text {
+                id: hLabel
 
-            font {
-                family: Config.fontWidget.familySub
-                pixelSize: Config.fontWidget.size - 75
+                text: "─ " + clock.hours.toUpperCase()
+                color: "#FFF"
+
+                font {
+                    family: Config.fontWidget.familySub
+                    pixelSize: Config.fontWidget.size - 75
+                }
+
             }
+
+            Text {
+                id: colonLabel
+
+                text: clock.colonVisible ? ":" : ""
+                color: "#FFF"
+
+                font {
+                    family: Config.fontWidget.familySub
+                    pixelSize: Config.fontWidget.size - 75
+                }
+
+            }
+
+            Text {
+                id: mLabel
+
+                text: clock.min.toUpperCase() + " ─"
+                color: "#FFF"
+
+                font {
+                    family: Config.fontWidget.familySub
+                    pixelSize: Config.fontWidget.size - 75
+                }
+
+            }
+
         }
 
     }
