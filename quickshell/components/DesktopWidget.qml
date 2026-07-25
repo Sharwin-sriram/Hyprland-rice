@@ -15,7 +15,7 @@ PanelWindow {
     property string hours: ""
     property string min: ""
     property bool colonVisible: true
-    property bool colon: true
+    property bool colon: false
     // Colors
     property color fg: Colors.fg
     property color bg: Colors.bg
