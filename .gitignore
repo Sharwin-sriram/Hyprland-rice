@@ -39,6 +39,8 @@ fontconfig/
 qt6ct/
 pacseek/
 */dist/
+cursor/
+Cursor/
 
 # Files
 QtProject.conf
