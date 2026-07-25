@@ -211,7 +211,7 @@ local suppressMaximizeRule = hl.window_rule({
 
 	suppress_event = "maximize",
 })
--- suppressMaximizeRule:set_enabled(false)
+suppressMaximizeRule:set_enabled(true)
 
 hl.window_rule({
 	-- Fix some dragging issues with XWayland
@@ -234,6 +234,19 @@ hl.layer_rule({
 	match = { namespace = "waybar" },
 	blur = true,
 	ignore_alpha = 0.1,
+})
+
+-- Blur for Spotify
+hl.layer_rule({
+	name = "spotify-blur",
+	match = { namespace = "Spotify" },
+	blur = true
+})
+
+hl.window_rule({
+	name = "spotify-blur",
+	match = { class = "^(Spotify)$" },
+	opacity = "0.9",
 })
 
 -- Layer rules also return a handle.
