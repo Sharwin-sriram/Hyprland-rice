@@ -1,11 +1,11 @@
 // import "quickshell.js" as Theme
-import "."
+import ".."
+import "../config/config.js" as Config
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Services.Notifications
 import Quickshell.Wayland
-import "config.js" as Config
 
 // TODO: Implement a full working notification center
 Scope {

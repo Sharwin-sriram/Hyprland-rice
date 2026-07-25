@@ -1,11 +1,11 @@
-import "."
+import ".."
+// import "quickshell.js" as Colors
+import "../config/config.js" as Config
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
-// import "quickshell.js" as Colors
-import "config.js" as Config
 
 PanelWindow {
     id: clock

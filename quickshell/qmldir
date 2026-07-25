@@ -1,4 +1,4 @@
-singleton Colors 1.0 Colors.qml
-DesktopWidget 1.0 DesktopWidget.qml
-Notification 1.0 Notification.qml
-LogoutMenu 1.0 LogoutMenu.qml
+singleton Colors 1.0 config/Colors.qml
+DesktopWidget 1.0 components/DesktopWidget.qml
+Notification 1.0 components/Notification.qml
+LogoutMenu 1.0 components/LogoutMenu.qml
