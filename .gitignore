@@ -12,7 +12,6 @@ Kitware
 WhatsApp Desktop
 dconf
 micro
-obs-studio
 vlc
 akonadi-firstrunrc
 akonadi
@@ -50,3 +49,7 @@ filelightrc
 .env
 
 # *.md
+*.txt
+*.gz
+
+service.json
