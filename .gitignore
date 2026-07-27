@@ -41,6 +41,7 @@ pacseek/
 */dist/
 cursor/
 Cursor/
+obs-websocket/
 
 # Files
 QtProject.conf
