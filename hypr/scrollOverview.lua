@@ -1,4 +1,3 @@
--- .config/hypr/hyprland.lua
 hl.config({
     plugin = {
         scrolloverview = {
@@ -26,32 +25,27 @@ hl.config({
     },
 })
 
-hl.bind("ALT + SHIFT + TAB", function()
-    hl.plugin.scrolloverview.overview("on")
-    -- hl.plugin.scrolloverview.navigate("left")
-    hl.plugin.scrolloverview.navigate("up")
-end)
+hl.bind("TAB",hl.plugin.scrolloverview.overview("toggle"))
 
-hl.bind("ALT + TAB" , function()
-    hl.plugin.scrolloverview.overview("on")
-    -- hl.plugin.scrolloverview.navigate("right")
-    hl.plugin.scrolloverview.navigate("down")
-end)
-
--- hl.bind("ALT", hl.dispatch(hl.plugin.scrolloverview.overview("off")))
+local mainMod = "SUPER"
+local fileManager = "thunar"
+local terminal = "kitty"
 
 hl.define_submap("scrolloverview", function()
     -- hl.bind("ALT + SHIFT + TAB",  hl.plugin.scrolloverview.navigate("left"))
-    hl.bind("ALT + SHIFT + TAB",  hl.plugin.scrolloverview.navigate("up"),{repeating = true})
+    hl.bind("SHIFT + TAB",  hl.plugin.scrolloverview.navigate("up"),{repeating = true})
     -- hl.bind("ALT + TAB",   hl.plugin.scrolloverview.navigate("right"))
-    hl.bind("ALT + TAB",   hl.plugin.scrolloverview.navigate("down"),{repeating = true})
+    hl.bind("TAB",   hl.plugin.scrolloverview.navigate("down"),{repeating = true})
     hl.bind("left",   hl.plugin.scrolloverview.navigate("left"))
     hl.bind("right",  hl.plugin.scrolloverview.navigate("right"))
     hl.bind("up",     hl.plugin.scrolloverview.navigate("up"))
     hl.bind("down",   hl.plugin.scrolloverview.navigate("down"))
-    hl.bind("return", hl.plugin.scrolloverview.overview("select"))
+    hl.bind("return", hl.plugin.scrolloverview.overview("off"))
+    hl.bind("TAB", hl.plugin.scrolloverview.overview("off"))
     hl.bind("escape", hl.plugin.scrolloverview.overview("off"))
-    -- hl.bind("ALT", hl.plugin.scrolloverview.overview("toggle"))
+    hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
+    hl.bind(mainMod .. " + W", hl.dsp.window.close())
+    hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
     
     hl.bind("mouse:272", function()
         -- Select the clicked window, or just the workspace if no window was clicked, then close the overview. This is the default behaviour if submap is not defined.
