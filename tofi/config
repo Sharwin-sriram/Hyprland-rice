@@ -11,9 +11,9 @@ num-results = 5
 font = JetBrainsMono Nerd Font
 font-size = 24
 
-text-color = #A2BE32
+text-color = #408735
 
 prompt-text = " : "
 
-background-color = #3D2B42a0
-selection-color =  #F1EEF8
+background-color = #041117a0
+selection-color =  #FEBCA3

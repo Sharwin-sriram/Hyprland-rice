@@ -4,13 +4,14 @@
 
 -- Move cursor to an absolute position (global coordinates, spans all monitors)
 local function move_cursor_to(x, y)
-    hl.dispatch(hl.dsp.cursor.move({ x = x, y = y }))
+	hl.dispatch(hl.dsp.cursor.move({ x = x, y = y }))
 end
 
 local terminal = "kitty"
 local fileManager = "thunar"
 -- local menu = "hyprlauncher"
-local menu = "tofi-drun -c ~/.config/tofi/config --drun-launch=true --num-results 7 --font /usr/share/fonts/TTF/JetBrainsMonoNerdFont-Regular.ttf --hint-font false"
+local menu =
+	"tofi-drun -c ~/.config/tofi/config --drun-launch=true --num-results 7 --font /usr/share/fonts/TTF/JetBrainsMonoNerdFont-Regular.ttf --hint-font false"
 local lockscreen = "loginctl lock-session"
 local lockMenu = "wlogout"
 
@@ -28,9 +29,9 @@ hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal), { repeating = true })
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd(lockscreen))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + O", function() 
+hl.bind(mainMod .. " + O", function()
 	hl.dispatch(hl.dsp.exec_cmd(lockMenu))
-    move_cursor_to(1920,0)
+	move_cursor_to(1920, 0)
 end)
 
 hl.bind(mainMod .. " + Z", hl.dsp.window.float({ action = "toggle" }))
@@ -42,7 +43,7 @@ hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen("maximize", "toggle"
 -- Screenshot keybind
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/screenshot.sh"))
 
-hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("grim - | wl-copy"))
+hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/screenshot.sh -fs"))
 hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("hyprpicker | wl-copy"))
 
 -- Move focus with mainMod + arrow keys
@@ -51,7 +52,7 @@ hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
 
--- Create a new workspace and Focus on it
+-- Create a new workspace and move current window to it
 hl.bind(mainMod .. " + D", hl.dsp.window.move({ workspace = "empty" }))
 
 -- Jump to a new empty workspace

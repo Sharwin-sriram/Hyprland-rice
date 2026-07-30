@@ -27,9 +27,11 @@ PanelWindow {
         spacing: 0
 
         Rectangle {
-            height: 100
-            width: 200
+            height: 80
+            // Layout.fillWidth: true
+            width: 500
             color: "white"
+            radius: 6
         }
 
     }

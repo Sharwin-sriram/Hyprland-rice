@@ -5,7 +5,7 @@ import "ui"
 ShellRoot {
     // WallpaperSwitcher {}
 
-    // Bar {}
+    Bar {}
     // LogoutMenu {}
     // Notification {}
     DesktopWidget {

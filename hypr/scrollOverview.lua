@@ -1,63 +1,68 @@
 hl.config({
-    plugin = {
-        scrolloverview = {
-            gesture_distance = 500, -- how far is the "max" for the gesture
-            scale = 0.8, -- preferred overview scale
-            workspace_gap = 20,
-            -- layout = "vertical", -- vertical or horizontal
-            layout = "vertical", -- vertical or horizontal
-            wallpaper = 0, -- 0: global only, 1: per-workspace only, 2: both
-            -- wallpaper = 1, -- 0: global only, 1: per-workspace only, 2: both
-            blur = false, -- blur only the main overview wallpaper
+	plugin = {
+		scrolloverview = {
+			gesture_distance = 500, -- how far is the "max" for the gesture
+			scale = 0.8, -- preferred overview scale
+			workspace_gap = 20,
+			-- layout = "vertical", -- vertical or horizontal
+			layout = "vertical", -- vertical or horizontal
+			wallpaper = 0, -- 0: global only, 1: per-workspace only, 2: both
+			-- wallpaper = 1, -- 0: global only, 1: per-workspace only, 2: both
+			blur = false, -- blur only the main overview wallpaper
 
-            shadow = {
-                enabled = false,
-                range = 50,
-                render_power = 3,
-                color = 0xee1a1a1a,
-            },
+			shadow = {
+				enabled = false,
+				range = 50,
+				render_power = 3,
+				color = 0xee1a1a1a,
+			},
 
-            input = {
-                drag_mode = 0,
-                scrolling_mode = 2
-            }
-        },
-    },
+			input = {
+				drag_mode = 0,
+				scrolling_mode = 2,
+			},
+		},
+	},
 })
-
-hl.bind("TAB",hl.plugin.scrolloverview.overview("toggle"))
 
 local mainMod = "SUPER"
 local fileManager = "thunar"
 local terminal = "kitty"
 
+hl.bind(mainMod .. " + TAB", hl.plugin.scrolloverview.overview("toggle"))
+
 hl.define_submap("scrolloverview", function()
-    -- hl.bind("ALT + SHIFT + TAB",  hl.plugin.scrolloverview.navigate("left"))
-    hl.bind("SHIFT + TAB",  hl.plugin.scrolloverview.navigate("up"),{repeating = true})
-    -- hl.bind("ALT + TAB",   hl.plugin.scrolloverview.navigate("right"))
-    hl.bind("TAB",   hl.plugin.scrolloverview.navigate("down"),{repeating = true})
-    hl.bind("left",   hl.plugin.scrolloverview.navigate("left"))
-    hl.bind("right",  hl.plugin.scrolloverview.navigate("right"))
-    hl.bind("up",     hl.plugin.scrolloverview.navigate("up"))
-    hl.bind("down",   hl.plugin.scrolloverview.navigate("down"))
-    hl.bind("return", hl.plugin.scrolloverview.overview("off"))
-    hl.bind("TAB", hl.plugin.scrolloverview.overview("off"))
-    hl.bind("escape", hl.plugin.scrolloverview.overview("off"))
-    hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-    hl.bind(mainMod .. " + W", hl.dsp.window.close())
-    hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-    
-    hl.bind("mouse:272", function()
-        -- Select the clicked window, or just the workspace if no window was clicked, then close the overview. This is the default behaviour if submap is not defined.
-        hl.plugin.scrolloverview.overview("select")
-        hl.plugin.scrolloverview.window("select")
-        hl.plugin.scrolloverview.overview("off")
-    end, { mouse = true })
-    hl.bind("mouse:274", hl.plugin.scrolloverview.window("close"), { mouse = true })
+	-- hl.bind("ALT + SHIFT + TAB",  hl.plugin.scrolloverview.navigate("left"))
+	hl.bind("SHIFT + TAB", hl.plugin.scrolloverview.navigate("up"), { repeating = true })
+	-- hl.bind("ALT + TAB",   hl.plugin.scrolloverview.navigate("right"))
+	hl.bind("TAB", hl.plugin.scrolloverview.navigate("down"), { repeating = true })
+	hl.bind("left", hl.plugin.scrolloverview.navigate("left"))
+	hl.bind(mainMod .. " + left", hl.plugin.scrolloverview.navigate("left"))
+	hl.bind("right", hl.plugin.scrolloverview.navigate("right"))
+	hl.bind(mainMod .. " + right", hl.plugin.scrolloverview.navigate("right"))
+	hl.bind("up", hl.plugin.scrolloverview.navigate("up"))
+	hl.bind("down", hl.plugin.scrolloverview.navigate("down"))
+	hl.bind("return", hl.plugin.scrolloverview.overview("off"))
+	hl.bind("escape", hl.plugin.scrolloverview.overview("off"))
+	hl.bind(" + Q", hl.dsp.exec_cmd(terminal))
+	hl.bind(" + W", hl.dsp.window.close())
+	hl.bind(" + E", hl.dsp.exec_cmd(fileManager))
+	hl.bind(" + D", hl.dsp.window.move({ workspace = "empty" }))
+	hl.bind(" + Z", hl.dsp.window.float({ action = "toggle" }))
+    hl.bind(" + Print", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/screenshot.sh -fs"))
+	-- hl.bind(mainMod .. " + C", hl.dsp.window.move({ workspace = "empty" }))
+
+	hl.bind("mouse:272", function()
+		-- Select the clicked window, or just the workspace if no window was clicked, then close the overview. This is the default behaviour if submap is not defined.
+		hl.plugin.scrolloverview.overview("select")
+		hl.plugin.scrolloverview.window("select")
+		hl.plugin.scrolloverview.overview("off")
+	end, { mouse = true })
+	hl.bind("mouse:274", hl.plugin.scrolloverview.window("close"), { mouse = true })
 end)
 
 -- Example Hyprland bind that keeps working inside the submap:
 for i = 1, 10 do
-    local key = i % 10
-    hl.bind("SUPER + " .. key, hl.dsp.focus({ workspace = i }), { submap_universal = true })
+	local key = i % 10
+	hl.bind("SUPER + " .. key, hl.dsp.focus({ workspace = i }), { submap_universal = true })
 end
