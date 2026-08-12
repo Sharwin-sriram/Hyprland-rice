@@ -43,6 +43,7 @@ cursor/
 Cursor/
 obs-websocket/
 plugin_config/
+heroic
 
 # Files
 QtProject.conf
@@ -55,5 +56,5 @@ filelightrc
 # *.md
 *.txt
 *.gz
-
+*.histfile
 service.json
