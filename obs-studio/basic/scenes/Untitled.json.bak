@@ -1,7 +1,7 @@
 {
     "name": "Untitled",
     "DesktopAudioDevice1": {
-        "prev_ver": 536936450,
+        "prev_ver": 537001985,
         "name": "Desktop Audio",
         "uuid": "d55d1e24-563b-4e45-a373-1684bcb2ca0d",
         "id": "pulse_output_capture",
@@ -32,7 +32,7 @@
         "private_settings": {}
     },
     "AuxAudioDevice1": {
-        "prev_ver": 536936450,
+        "prev_ver": 537001985,
         "name": "Mic/Aux",
         "uuid": "6e7cf487-e2de-4635-bf89-4f4d8f96b17a",
         "id": "pulse_input_capture",
@@ -64,7 +64,7 @@
     },
     "sources": [
         {
-            "prev_ver": 536936450,
+            "prev_ver": 537001985,
             "name": "Firefox",
             "uuid": "6c5684a9-c865-4d7e-9467-743b564b9700",
             "id": "pipewire-screen-capture-source",
@@ -90,7 +90,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936450,
+            "prev_ver": 537001985,
             "name": "Scene",
             "uuid": "5a4cfb05-4097-40fe-8269-846d0a547813",
             "id": "scene",
