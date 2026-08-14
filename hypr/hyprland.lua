@@ -24,8 +24,9 @@ hl.monitor({
 
 --
 require("startupApps")
--- require("scrollOverview")
+require("scrollOverview")
 require("scrollingLayout")
+require("snappySwitcher")
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----

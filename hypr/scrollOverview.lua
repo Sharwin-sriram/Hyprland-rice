@@ -30,6 +30,7 @@ local fileManager = "thunar"
 local terminal = "kitty"
 
 hl.bind(mainMod .. " + TAB", hl.plugin.scrolloverview.overview("toggle"))
+-- hl.bind("SHIFT + RETURN", hl.plugin.scrolloverview.overview("toggle"))
 
 hl.define_submap("scrolloverview", function()
 	-- hl.bind("ALT + SHIFT + TAB",  hl.plugin.scrolloverview.navigate("left"))
