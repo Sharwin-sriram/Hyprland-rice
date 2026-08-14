@@ -45,6 +45,7 @@ obs-websocket/
 plugin_config/
 heroic
 Antigravity\ IDE/
+chromium/
 
 # Files
 QtProject.conf
