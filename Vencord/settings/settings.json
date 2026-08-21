@@ -4,9 +4,7 @@
     "useQuickCss": false,
     "themeLinks": [],
     "eagerPatches": false,
-    "enabledThemes": [
-        "Themecord.css"
-    ],
+    "enabledThemes": [],
     "enableReactDevtools": false,
     "frameless": false,
     "transparent": false,
@@ -547,6 +545,9 @@
         },
         "MusicRichPresence": {
             "enabled": false
+        },
+        "TenorGifSearch": {
+            "enabled": false
         }
     },
     "uiElements": {
@@ -563,6 +564,6 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1784549500009
+        "settingsSyncVersion": 1787141552180
     }
 }
