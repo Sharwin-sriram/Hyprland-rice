@@ -26,7 +26,7 @@ hl.monitor({
 require("startupApps")
 require("scrollOverview")
 require("scrollingLayout")
-require("snappySwitcher")
+require("TabSwitch")
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -163,25 +163,7 @@ hl.config({
 	},
 })
 
-hl.gesture({
-	fingers = 3,
-	direction = "horizontal",
-	action = "workspace",
-})
-
-hl.gesture({
-	fingers = 3,
-	direction = "vertical",
-	action = "special",
-	workspace_name = "magic",
-})
-
-hl.gesture({
-	fingers = 4,
-	direction = "vertical",
-	action = "special",
-	workspace_name = "discord",
-})
+require("gestures")
 
 -- Example per-device config
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
