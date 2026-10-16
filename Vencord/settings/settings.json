@@ -546,7 +546,7 @@
         "MusicRichPresence": {
             "enabled": false
         },
-        "TenorGifSearch": {
+        "GifProviderSwitcher": {
             "enabled": false
         }
     },
@@ -564,6 +564,7 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1787141552180
-    }
+        "settingsSyncVersion": 1791910973586
+    },
+    "nativeTitleBar": false
 }
